@@ -12,15 +12,17 @@
 
 #include "push_swap.h"
 
-int	correct_input(char	*argv)
+static int	correct_input(char	*argv)
 {
 	int	i;
 
 	i = 0;
 	while (argv[i])
+	{
 		if (!ft_isdigit(argv[i]))
 			return (0);
 	i++;
+	}
 	return (1);
 }
 
@@ -36,7 +38,7 @@ int	main(int argc, char	**argv)
 		i++;
 	}
 
-	sa = ft_printf("sa\n");
+	/*sa = ft_printf("sa\n");
 	// Switch Element 1 and 2 of Stack A
 	sb = ft_printf("sb\n");
 	// Switch Element 1 and 2 of Stack B
@@ -57,6 +59,6 @@ int	main(int argc, char	**argv)
 	rrb = ft_printf("rrb\n");
 	// Put Last ELement of Stack B on Top of Stack B and shift everything Down
 	rrr = ft_printf("rrr\n");
-	// Put Last Element of Stack A and STack B On Top of its Stack and shift everything Down
-
+	// Put Last Element of Stack A and Stack B On Top of its Stack and shift everything Down*/
+	return (0);
 }

@@ -18,4 +18,12 @@
 # include <stdarg.h>
 # include "./tools/libft/libft.h"
 
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+}				t_node;
+
+int	main(int argc, char	**argv);
+int	linked_list_start(int argc, char **argv);
 #endif

@@ -1,6 +1,4 @@
-NAME	=	push_swap.a
-
-
+NAME	=	push_swap
 
 SRC		=	push_swap.c
 
@@ -23,7 +21,7 @@ clean:
 	${RM}	${OBJS}
 
 fclean: clean
-	${RM}	${NAME}
+	${RM}	${NAME} libft.a
 
 
 re: fclean all
