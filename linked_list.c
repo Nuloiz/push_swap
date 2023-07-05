@@ -6,17 +6,14 @@
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:34:09 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/04 12:05:56 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/07/05 15:25:21 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_list(void)
+static void	print_list(t_node *p)
 {
-	t_node	*p;
-
-	p = NULL;
 	ft_printf("\n[");
 	while (p != NULL)
 	{
@@ -32,19 +29,41 @@ static t_node	*new_node(int current)
 
 	new = (t_node *)malloc(sizeof(struct s_node));
 	new->value = current;
-	new->next = new;
+	new->next = NULL;
 	return (new);
+}
+
+static t_node	*add_node(t_node *head, int value)
+{
+	t_node	*temp;
+	t_node	*p;
+
+	temp = new_node(value);
+	if (head == NULL)
+		head = temp;
+	else
+	{
+		p = head;
+		while (p->next != NULL)
+			p = p->next;
+		p->next = temp;
+	}
+	return (head);
 }
 
 int	linked_list_start(int argc, char **argv)
 {
 	int		i;
-	t_node	*head;
+	t_node	*stack_a;
+	//t_node	*stack_b;
 
 	i = 0;
-	head = NULL;
-	while (i++ < argc)
-		new_node(ft_atoi(argv[i]));
-	print_list();
+	stack_a = NULL;
+	while (i < argc)
+	{
+		stack_a = add_node(stack_a, ft_atoi(argv[i]));
+		i++;
+	}
+	print_list(stack_a);
 	return (1);
 }

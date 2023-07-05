@@ -24,6 +24,6 @@ typedef struct s_node
 	struct s_node	*next;
 }				t_node;
 
-int	main(int argc, char	**argv);
+int	main_s(int argc, char	**argv);
 int	linked_list_start(int argc, char **argv);
 #endif

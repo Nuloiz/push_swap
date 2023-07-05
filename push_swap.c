@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:34:38 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/03 11:34:38 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/07/05 14:51:12 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	correct_input(char	*argv)
 	return (1);
 }
 
-int	main(int argc, char	**argv)
+int	main_s(int argc, char	**argv)
 {
 	int	i;
 
@@ -37,6 +37,7 @@ int	main(int argc, char	**argv)
 			return (0);
 		i++;
 	}
+	linked_list_start(argc, argv);
 
 	/*sa = ft_printf("sa\n");
 	// Switch Element 1 and 2 of Stack A
@@ -61,4 +62,9 @@ int	main(int argc, char	**argv)
 	rrr = ft_printf("rrr\n");
 	// Put Last Element of Stack A and Stack B On Top of its Stack and shift everything Down*/
 	return (0);
+}
+
+int	main(int argc, char** argv)
+{
+	return (main_s(argc - 1, argv + 1));
 }

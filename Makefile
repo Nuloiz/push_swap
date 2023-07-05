@@ -13,10 +13,9 @@ CFLAGS	=	-Wall -Werror -Wextra -g
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS}
-	ar -rc  ${NAME} ${OBJS}
 	make all -C tools/libft
 	cp tools/libft/libft.a .
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME} libft.a
 
 clean:
 	${RM}	${OBJS}
