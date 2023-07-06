@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	correct_input(char	*argv)
+static int	correct_input_digits(char	*argv)
 {
 	int	i;
 
@@ -26,25 +26,64 @@ static int	correct_input(char	*argv)
 	return (1);
 }
 
-int	main_s(int argc, char	**argv)
+static int	correct_input_array(int argc, char *argv)
 {
 	int	i;
 
 	i = 0;
-	while (i < argc)
+	if (argc != 1)
+		return (0);
+	while (argv[i])
 	{
-		if (!correct_input(argv[i]))
+		if (!ft_isdigit(argv[i]) && argv[i] != ' ')
 			return (0);
 		i++;
 	}
-	linked_list_start(argc, argv);
+	return (1);
+}
 
-	/*sa = ft_printf("sa\n");
-	// Switch Element 1 and 2 of Stack A
-	sb = ft_printf("sb\n");
-	// Switch Element 1 and 2 of Stack B
-	ss = ft_printf("ss\n");
-	// Switch Element 1 and 2 of Stack A and Stack B
+
+int	main(int argc, char	**argv)
+{
+	int		i;
+	t_node	*stack_a;
+	t_node	*stack_b;
+
+	i = 0;
+	argc = argc -1;
+	argv = argv + 1;
+
+	if (!correct_input_array(argc, argv[i]))
+	{
+		while (i < argc)
+		{
+			if (!correct_input_digits(argv[i]))
+				return (0);
+			i++;
+		}
+	}
+	else
+	{
+		argv = ft_split(argv[0], ' ');
+		i = 1;
+		while (argv[i++])
+			argc++;
+	}
+	stack_a = linked_list_start(argc, argv);
+	stack_b = NULL;
+	print_list(stack_a);
+	// empty
+	// empty:
+	// empty;
+	stack_a = swap_first(stack_a);
+	// sa
+	stack_b = swap_first(stack_b);
+	// sb
+	//stack_a = swap_first(stack_a);
+	stack_b = swap_first(stack_b);
+	//ss
+	print_list(stack_a);
+	/*
 	pa = ft_printf("pa\n");
 	// Put First Element of Stack A on Top of Stack B
 	pb = ft_printf("pb\n");
@@ -54,17 +93,14 @@ int	main_s(int argc, char	**argv)
 	rb = ft_printf("rb\n");
 	// Put First Element of STack B at the Last Place and shift everything Up
 	rr = ft_printf("rr\n");
-	// Put First Element of Stack A and Stack B at the Last Place and shift everything Up
-	rra = ft_printf("rra\n");
-	// Put Last Element of Stack A On Top of Stack A and shift everything Down
-	rrb = ft_printf("rrb\n");
-	// Put Last ELement of Stack B on Top of Stack B and shift everything Down
-	rrr = ft_printf("rrr\n");
-	// Put Last Element of Stack A and Stack B On Top of its Stack and shift everything Down*/
+	// Put First Element of Stack A and Stack B at the Last Place and shift everything Up*/
+	stack_a = rotate_last(&stack_a);
+	//rra
+	stack_b = rotate_last(&stack_b);
+	//rrb
+	//stack_a = rotate_last(&stack_a);
+	stack_b = rotate_last(&stack_b);
+	//rrr
+	print_list(stack_a);
 	return (0);
-}
-
-int	main(int argc, char** argv)
-{
-	return (main_s(argc - 1, argv + 1));
 }

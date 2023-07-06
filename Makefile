@@ -1,6 +1,6 @@
 NAME	=	push_swap
 
-SRC		=	push_swap.c linked_list.c
+SRC		=	push_swap.c linked_list.c sa_sb_ss.c pa_pb.c ra_rb_rr.c rra_rrb_rrr.c
 
 OBJS	=	${SRC:.c=.o}
 

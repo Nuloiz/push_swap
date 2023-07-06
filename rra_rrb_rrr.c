@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   rra_rrb_rrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/03 11:35:42 by nschutz          ###   ########.fr       */
+/*   Created: 2023/07/06 11:32:37 by nschutz           #+#    #+#             */
+/*   Updated: 2023/07/06 16:26:21 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "./tools/libft/libft.h"
-
-typedef struct s_node
+t_node	*rotate_last(t_node **stack_a)
 {
-	int				value;
-	struct s_node	*next;
-}				t_node;
+	t_node	*nearlylast;
+	t_node	*last;
 
-int		main(int argc, char	**argv);
-t_node	*linked_list_start(int argc, char **argv);
-t_node	*swap_first(t_node *head);
-t_node	*rotate_last(t_node **head);
-void	print_list(t_node *p);
-
-#endif
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return (0);
+	nearlylast = *stack_a;
+	while (nearlylast->next->next != NULL)
+	{
+		nearlylast = nearlylast->next;
+	}
+	last = nearlylast->next;
+	nearlylast->next = NULL;
+	last->next = *stack_a;
+	*stack_a = last;
+	return (*stack_a);
+}

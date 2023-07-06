@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	print_list(t_node *p)
+void	print_list(t_node *p)
 {
 	ft_printf("\n[");
 	while (p != NULL)
@@ -51,7 +51,7 @@ static t_node	*add_node(t_node *head, int value)
 	return (head);
 }
 
-int	linked_list_start(int argc, char **argv)
+t_node	*linked_list_start(int argc, char **argv)
 {
 	int		i;
 	t_node	*stack_a;
@@ -64,6 +64,5 @@ int	linked_list_start(int argc, char **argv)
 		stack_a = add_node(stack_a, ft_atoi(argv[i]));
 		i++;
 	}
-	print_list(stack_a);
-	return (1);
+	return (stack_a);
 }

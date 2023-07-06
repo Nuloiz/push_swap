@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sa_sb_ss.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 11:35:42 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/03 11:35:42 by nschutz          ###   ########.fr       */
+/*   Created: 2023/07/06 11:31:59 by nschutz           #+#    #+#             */
+/*   Updated: 2023/07/06 11:31:59 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "./tools/libft/libft.h"
-
-typedef struct s_node
+t_node	*swap_first(t_node *head)
 {
-	int				value;
-	struct s_node	*next;
-}				t_node;
+	t_node	*first;
+	t_node	*second;
 
-int		main(int argc, char	**argv);
-t_node	*linked_list_start(int argc, char **argv);
-t_node	*swap_first(t_node *head);
-t_node	*rotate_last(t_node **head);
-void	print_list(t_node *p);
-
-#endif
+	if (head == NULL || head->next == NULL)
+		return (head);
+	first = head;
+	second = head->next;
+	first->next = second->next;
+	second->next = first;
+	head = second;
+	return (head);
+}
