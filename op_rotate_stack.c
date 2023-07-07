@@ -12,13 +12,34 @@
 
 #include "push_swap.h"
 
+t_node	*rotate_first(t_node **stack_a)
+{
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
+
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return (*stack_a);
+	first = *stack_a;
+	second = first->next;
+	last = first->next;
+	while (last->next != NULL)
+	{
+		last = last->next;
+	}
+	first->next = NULL;
+	last->next = first;
+	*stack_a = second;
+	return (*stack_a);
+}
+
 t_node	*rotate_last(t_node **stack_a)
 {
 	t_node	*nearlylast;
 	t_node	*last;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return (0);
+		return (*stack_a);
 	nearlylast = *stack_a;
 	while (nearlylast->next->next != NULL)
 	{
