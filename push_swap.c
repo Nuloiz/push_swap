@@ -47,7 +47,6 @@ int	main(int argc, char	**argv)
 {
 	int		i;
 	t_node	*stack_a;
-	t_node	*stack_b;
 
 	i = 0;
 	argc = argc -1;
@@ -70,60 +69,7 @@ int	main(int argc, char	**argv)
 			argc++;
 	}
 	stack_a = linked_list_start(argc, argv);
-	stack_b = test_stack_b(argc);
-	ft_printf("Stack A:");
-	print_list(stack_a);
-	ft_printf("Stack B:");
-	print_list(stack_b);
-	// empty
-	// empty:
-	// empty;
-	ft_printf("Stack A / Stack B with sa/sb:");
-	stack_a = swap_first(stack_a);
-	print_list(stack_a);
-	// sa
-	stack_b = swap_first(stack_b);
-	print_list(stack_b);
-	// sb
-	ft_printf("Stack A / Stack B with ss");
-	stack_a = swap_first(stack_a);
-	print_list(stack_a);
-	stack_b = swap_first(stack_b);
-	print_list(stack_b);
-	//ss
-	ft_printf(("Stack A / Stack B with pa"));
-	push_stack(&stack_a, &stack_b);
-	//pa
-	print_list(stack_a);
-	ft_printf(("Stack A / Stack B with pb"));
-	push_stack(&stack_b, &stack_a);
-	//pb
-	print_list(stack_a);
-	ft_printf("Stack A / Stack B with ra/rb");
-	stack_a = rotate_first(&stack_a);
-	//ra
-	stack_b = rotate_first(&stack_b);
-	//rb
-	print_list(stack_a);
-	print_list(stack_b);
-	ft_printf("Stack A / Stack B with rr");
-	stack_a = rotate_first(&stack_a);
-	stack_b = rotate_first(&stack_b);
-	//rr
-	print_list(stack_a);
-	print_list(stack_b);
-	ft_printf("Stack A / Stack B with rra/rrb");
-	stack_a = rotate_last(&stack_a);
-	//rra
-	stack_b = rotate_last(&stack_b);
-	//rrb
-	print_list(stack_a);
-	print_list(stack_b);
-	ft_printf("Stack A / Stack B with rrr");
-	stack_a = rotate_last(&stack_a);
-	stack_b = rotate_last(&stack_b);
-	//rrr
-	print_list(stack_a);
-	print_list(stack_b);
+	//testing_operations(stack_a);
+	radix_sort(stack_a);
 	return (0);
 }

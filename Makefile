@@ -1,6 +1,6 @@
 NAME	=	push_swap
 
-SRC		=	push_swap.c linked_list.c op_switch_elements_in_stack.c op_rotate_stack.c op_swap_stacks.c
+SRC		=	tester.c push_swap.c linked_list.c op_switch_elements_in_stack.c op_rotate_stack.c op_swap_stacks.c radix_sort.c
 
 OBJS	=	${SRC:.c=.o}
 

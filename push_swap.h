@@ -24,13 +24,16 @@ typedef struct s_node
 	struct s_node	*next;
 }				t_node;
 
-t_node	*test_stack_b(int argc);
+void	print_list(t_node *p);
+void	testing_operations(t_node *stack_a);
 int		main(int argc, char	**argv);
 t_node	*linked_list_start(int argc, char **argv);
-t_node	*swap_first(t_node *head);
-t_node	*rotate_first(t_node **head);
-t_node	*rotate_last(t_node **head);
-void	push_stack(t_node	**stack_get, t_node **stack_loose);
-void	print_list(t_node *p);
+t_node	*sa(t_node *stack_a);
+t_node	*sb(t_node *stack_b);
+void	ss(t_node **stack_a, t_node **stack_b);
+void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
+void	pa(t_node **stack_a, t_node **stack_b);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	radix_sort(t_node *stack_a);
 
 #endif

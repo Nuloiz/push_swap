@@ -12,31 +12,6 @@
 
 #include "push_swap.h"
 
-t_node	*test_stack_b(int argc)
-{
-	t_node	*stack_b;
-
-	stack_b = NULL;
-	stack_b->value = argc;
-	stack_b->next = stack_b;
-	stack_b->value = 25;
-	stack_b->next = stack_b;
-	stack_b->value = 2;
-	stack_b->next = stack_b;
-	return (stack_b);
-}
-
-void	print_list(t_node *p)
-{
-	ft_printf("\n[");
-	while (p != NULL)
-	{
-		ft_printf(" %d ", p->value);
-		p = p->next;
-	}
-	ft_printf("]\n");
-}
-
 static t_node	*new_node(int current)
 {
 	t_node	*new;
