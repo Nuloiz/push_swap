@@ -44,7 +44,6 @@ t_node	*linked_list_start(int argc, char **argv)
 {
 	int		i;
 	t_node	*stack_a;
-	//t_node	*stack_b;
 
 	i = 0;
 	stack_a = NULL;

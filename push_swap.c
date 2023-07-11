@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-static int	correct_input_digits(char	*argv)
+static int	correct_input_digits(char *argv)
 {
 	int	i;
 
 	i = 0;
 	while (argv[i])
 	{
-		if (!ft_isdigit(argv[i]))
-			return (0);
+		if (!ft_isdigit(argv[i]) && argv[i] != '-')
+			return (ft_printf("Error\n"));
 	i++;
 	}
 	return (1);
@@ -35,18 +35,54 @@ static int	correct_input_array(int argc, char *argv)
 		return (0);
 	while (argv[i])
 	{
-		if (!ft_isdigit(argv[i]) && argv[i] != ' ')
-			return (0);
+		if (!ft_isdigit(argv[i]) && argv[i] != ' ' && argv[i] != '-')
+			return (ft_printf("Error\n"));
 		i++;
 	}
 	return (1);
 }
 
+static int	no_int_twice(char **argv)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = i;
+		k = ft_atoi(argv[i]);
+		while (argv[j + 1])
+		{
+			if (k == ft_atoi(argv[j + 1]))
+				return (ft_printf("Error\n"));
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+static int	sorting(int argc, char **argv)
+{
+	//testing_operations(linked_list_start(argc, argv));
+	if (!no_int_twice(argv))
+		return (ft_printf("Error\n"));
+	if (already_sorted(argc, argv))
+		return (0);
+	//if (argc <= 3)
+	//	three_arg(linked_list_start(argc, argv));
+	//else if (argc <= 5)
+	//	five_arg(linked_list_start(argc, argv));
+	else
+		radix_sort(linked_list_start(argc, argv));
+	return (1);
+}
 
 int	main(int argc, char	**argv)
 {
 	int		i;
-	t_node	*stack_a;
 
 	i = 0;
 	argc = argc -1;
@@ -57,7 +93,7 @@ int	main(int argc, char	**argv)
 		while (i < argc)
 		{
 			if (!correct_input_digits(argv[i]))
-				return (0);
+				return (ft_printf("Error\n"));
 			i++;
 		}
 	}
@@ -68,8 +104,5 @@ int	main(int argc, char	**argv)
 		while (argv[i++])
 			argc++;
 	}
-	stack_a = linked_list_start(argc, argv);
-	//testing_operations(stack_a);
-	radix_sort(stack_a);
-	return (0);
+	return (sorting(argc, argv));
 }
