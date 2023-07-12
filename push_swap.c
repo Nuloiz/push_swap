@@ -71,12 +71,12 @@ static int	sorting(int argc, char **argv)
 		return (ft_printf("Error\n"));
 	if (already_sorted(argc, argv))
 		return (0);
+	argv = new_numbers(argc, argv);
 	//if (argc <= 3)
 	//	three_arg(linked_list_start(argc, argv));
 	//else if (argc <= 5)
 	//	five_arg(linked_list_start(argc, argv));
-	else
-		radix_sort(linked_list_start(argc, argv));
+	radix_sort(linked_list_start(argc, argv));
 	return (1);
 }
 

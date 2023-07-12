@@ -27,8 +27,8 @@ static int	max_int(t_node *stack_a)
 			count = pos->value;
 		pos = pos->next;
 	}
-	while (count << max_shift != 0)
-		max_shift++; //Fehler
+	while (count >> max_shift != 0)
+		max_shift++;
 	return (max_shift);
 }
 

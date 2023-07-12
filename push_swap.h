@@ -36,5 +36,6 @@ void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node *stack_a);
 int		already_sorted(int argc, char **argv);
+char	**new_numbers(int argc, char **argv);
 
 #endif
