@@ -22,6 +22,7 @@ static char	**move_back(char **argv, char **new)
 		argv[ft_atoi(new[i])] = ft_itoa(i);
 		i++;
 	}
+	free(new);
 	return (argv);
 }
 
@@ -33,9 +34,9 @@ char	**new_numbers(int argc, char **argv)
 	int		loop;
 	char	**new;
 
-	loop = -1;
+	loop = 0;
 	new = ft_calloc(argc + 1, sizeof(char **));
-	while (loop++ < argc)
+	while (++loop < argc)
 	{
 		i = 0;
 		min = INT32_MAX;

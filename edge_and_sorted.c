@@ -28,3 +28,18 @@ int	already_sorted(int argc, char **argv)
 	}
 	return (1);
 }
+
+void	three_arg(t_node *stack_a)
+{
+	if (stack_a->value > stack_a->next->value)
+		stack_a = sa(stack_a);
+	if (stack_a->next->next != NULL)
+	{
+		if (stack_a->next->value > stack_a->next->next->value)
+		{
+			rotate_stack(&stack_a, NULL, "ra");
+			stack_a = sa(stack_a);
+			rotate_stack(&stack_a, NULL, "rra");
+		}
+	}
+}
