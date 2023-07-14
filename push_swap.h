@@ -35,8 +35,10 @@ void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node *stack_a);
-int		already_sorted(int argc, char **argv);
+int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
+void	five_arg(t_node *stack_a, int argc);
 char	**new_numbers(int argc, char **argv);
+void	free_stack(t_node *stack);
 
 #endif

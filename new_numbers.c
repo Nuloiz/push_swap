@@ -34,7 +34,7 @@ char	**new_numbers(int argc, char **argv)
 	int		loop;
 	char	**new;
 
-	loop = 0;
+	loop = -1;
 	new = ft_calloc(argc + 1, sizeof(char **));
 	while (++loop < argc)
 	{

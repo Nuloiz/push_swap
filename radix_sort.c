@@ -77,4 +77,5 @@ void	radix_sort(t_node *stack_a)
 		while (stack_b != NULL)
 			pa(&stack_a, &stack_b);
 	}
+	free_stack(stack_a);
 }
