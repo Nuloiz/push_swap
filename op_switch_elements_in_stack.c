@@ -64,5 +64,4 @@ void	ss(t_node **stack_a, t_node **stack_b)
 	second->next = first;
 	*stack_b = second;
 	ft_printf("ss\n");
-	return ;
 }

@@ -76,7 +76,6 @@ static void	rr_to_rrr(t_node **stack_a, t_node **stack_b, char *operation)
 		*stack_b = ra_rb(stack_b);
 		ft_printf("rr\n");
 	}
-	return ;
 }
 
 void	rotate_stack(t_node **stack_a, t_node	**stack_b, char	*operation)
@@ -93,5 +92,4 @@ void	rotate_stack(t_node **stack_a, t_node	**stack_b, char	*operation)
 	}
 	else if (operation[1] == 'r')
 		rr_to_rrr(stack_a, stack_b, operation);
-	return ;
 }

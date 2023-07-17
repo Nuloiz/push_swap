@@ -23,7 +23,6 @@ void	pa(t_node	**stack_a, t_node **stack_b)
 	first_a->next = *stack_a;
 	*stack_a = first_a;
 	ft_printf("pa\n");
-	return ;
 }
 
 void	pb(t_node	**stack_a, t_node **stack_b)
@@ -37,5 +36,4 @@ void	pb(t_node	**stack_a, t_node **stack_b)
 	first_a->next = *stack_b;
 	*stack_b = first_a;
 	ft_printf("pb\n");
-	return ;
 }
