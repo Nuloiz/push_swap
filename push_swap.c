@@ -66,7 +66,6 @@ static int	no_int_twice(char **argv)
 
 static int	sorting(int argc, char **argv)
 {
-	//testing_operations(linked_list_start(argc, argv));
 	if (!no_int_twice(argv))
 		return (ft_printf("Error\n"));
 	if (already_sorted(linked_list_start(argc, argv)))

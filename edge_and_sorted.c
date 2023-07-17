@@ -27,7 +27,7 @@ int	already_sorted(t_node	*stack)
 	return (1);
 }
 
-int	sorted(t_node	*stack)
+static int	sorted(t_node *stack)
 {
 	while (stack->next != NULL)
 	{
@@ -46,7 +46,8 @@ void	three_arg(t_node *stack_a)
 			stack_a->value > stack_a->next->next->value)
 		rotate_stack(&stack_a, NULL, "rra");
 	else if (stack_a->value > stack_a->next->value && \
-			stack_a->next->value < stack_a->next->next->value)
+			stack_a->next->value < stack_a->next->next->value && \
+			stack_a->value > stack_a->next->next->value)
 		rotate_stack(&stack_a, NULL, "ra");
 	else
 	{
@@ -61,8 +62,57 @@ void	three_arg(t_node *stack_a)
 	free_stack(stack_a);
 }
 
+t_node	*three_arg_for_five(t_node *stack_a)
+{
+	if (sorted(stack_a))
+		return (stack_a);
+	if (stack_a->next->next == NULL)
+		stack_a = sa(stack_a);
+	else if (stack_a->value < stack_a->next->value && \
+			stack_a->value > stack_a->next->next->value)
+		rotate_stack(&stack_a, NULL, "rra");
+	else if (stack_a->value > stack_a->next->value && \
+			stack_a->next->value < stack_a->next->next->value && \
+			stack_a->value > stack_a->next->next->value)
+		rotate_stack(&stack_a, NULL, "ra");
+	else
+	{
+		stack_a = sa(stack_a);
+		if (stack_a->value < stack_a->next->value && \
+			stack_a->value > stack_a->next->next->value)
+			rotate_stack(&stack_a, NULL, "rra");
+		else if (stack_a->value > stack_a->next->value && \
+			stack_a->value > stack_a->next->next->value)
+			rotate_stack(&stack_a, NULL, "ra");
+	}
+	return (stack_a);
+}
+
 void	five_arg(t_node *stack_a, int argc)
 {
+	int		i;
+	t_node	*stack_b;
+
+	i = -1;
+	stack_b = NULL;
+	while (++i < argc)
+	{
+		if (stack_a->value == 0 || stack_a->value == argc - 1)
+			pb(&stack_a, &stack_b);
+		rotate_stack(&stack_a, &stack_b, "rra");
+	}
+	stack_a = three_arg_for_five(stack_a);
+	if (stack_b->value < stack_b->next->value)
+	{
+		pa(&stack_a, &stack_b);
+		pa(&stack_a, &stack_b);
+		rotate_stack(&stack_a, &stack_b, "ra");
+	}
+	else
+	{
+		pa(&stack_a, &stack_b);
+		rotate_stack(&stack_a, &stack_b, "ra");
+		pa(&stack_a, &stack_b);
+	}
 	free_stack(stack_a);
-	return ((void)argc);
 }

@@ -24,8 +24,8 @@ typedef struct s_node
 	struct s_node	*next;
 }				t_node;
 
-void	print_list(t_node *p);
-void	testing_operations(t_node *stack_a);
+//void	print_list(t_node *p);
+//void	testing_operations(t_node *stack_a);
 int		main(int argc, char	**argv);
 t_node	*linked_list_start(int argc, char **argv);
 t_node	*sa(t_node *stack_a);
