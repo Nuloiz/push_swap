@@ -87,6 +87,8 @@ int	main(int argc, char	**argv)
 	i = 0;
 	argc = argc -1;
 	argv = argv + 1;
+	if (argc == 0)
+		return (0);
 	if (!correct_input_array(argc, argv[i]))
 	{
 		while (i < argc)
