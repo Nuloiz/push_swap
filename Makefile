@@ -25,9 +25,11 @@ ${NAME}: ${OBJS}
 
 clean:
 	${RM}	${OBJS}
+	make clean -C tools/libft
 
 fclean: clean
 	${RM}	${NAME} libft.a
+	make fclean -C tools/libft
 
 check: $(NAME)
 	@printf " running with 3 numbers... \t"

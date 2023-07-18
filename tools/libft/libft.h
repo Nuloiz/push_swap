@@ -25,7 +25,7 @@ int		ft_printf_sinchar(int n);
 int		ft_printf_str(const char *c);
 int		ft_printf_unsigned(unsigned int nbr);
 int		ft_printf_void(unsigned long long n);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int c);

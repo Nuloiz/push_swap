@@ -44,8 +44,8 @@ char	**new_numbers(int argc, char **argv)
 		{
 			if (ft_strncmp(argv[i], "!", 1) && ft_atoi(argv[i]) < min)
 			{
-					min = ft_atoi(argv[i]);
-					pos = i;
+				min = ft_atoi(argv[i]);
+				pos = i;
 			}
 			i++;
 		}

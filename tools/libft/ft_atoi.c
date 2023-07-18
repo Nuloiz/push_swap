@@ -20,11 +20,11 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	j;
-	int	k;
+	int		i;
+	int		j;
+	long	k;
 
 	i = 0;
 	k = 0;

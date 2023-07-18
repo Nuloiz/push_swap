@@ -14,23 +14,31 @@
 
 static int	correct_input_digits(char *argv)
 {
-	int	i;
+	int		i;
+	long	tmp;
 
 	i = 0;
+	tmp = ft_atoi(argv);
+	if (tmp < -2147483648 || tmp > 2147483647)
+		return (0);
 	while (argv[i])
 	{
 		if (!ft_isdigit(argv[i]) && argv[i] != '-')
 			return (0);
-	i++;
+		i++;
 	}
 	return (1);
 }
 
 static int	correct_input_array(int argc, char *argv)
 {
-	int	i;
+	int		i;
+	long	tmp;
 
 	i = 0;
+	tmp = ft_atoi(argv);
+	if (tmp < -2147483648 || tmp > 2147483647)
+		return (0);
 	if (argc != 1)
 		return (0);
 	while (argv[i])
