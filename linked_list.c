@@ -49,7 +49,7 @@ t_node	*linked_list_start(int argc, char **argv)
 	stack_a = NULL;
 	while (i < argc)
 	{
-		stack_a = add_node(stack_a, ft_atoi(argv[i]));
+		stack_a = add_node(stack_a, (int)ft_atoi(argv[i]));
 		i++;
 	}
 	return (stack_a);
