@@ -52,5 +52,6 @@ t_node	*linked_list_start(int argc, char **argv)
 		stack_a = add_node(stack_a, (int)ft_atoi(argv[i]));
 		i++;
 	}
+	free_array(argv);
 	return (stack_a);
 }

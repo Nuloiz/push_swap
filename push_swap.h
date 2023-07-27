@@ -38,5 +38,7 @@ void	three_arg(t_node *stack_a);
 void	five_arg(t_node *stack_a, int argc);
 char	**new_numbers(int argc, char **argv);
 void	free_stack(t_node *stack);
+void	free_array(char	**array);
+char	**new_array(char **argv);
 
 #endif

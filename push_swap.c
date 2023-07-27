@@ -20,7 +20,7 @@ static int	correct_input_digits(char *argv)
 
 	i = 0;
 	test = ft_atoi(argv);
-	if (test > INT32_MAX || test < INT32_MIN)
+	if (test > 2147483647 || test < -2147483648)
 		return (0);
 	while (argv[i])
 	{
@@ -69,12 +69,20 @@ static int	no_int_twice(char **argv)
 	return (1);
 }
 
-static int	sorting(int argc, char **argv)
+static void	sorting(char **argv)
 {
+	int	argc;
+
+	argc = 0;
+	while (argv[argc])
+		argc++;
 	if (!no_int_twice(argv))
-		return (ft_printf("Error\n"));
+	{
+		free_array(argv);
+		return (ft_putendl_fd("Error", 2));
+	}
 	if (already_sorted(linked_list_start(argc, argv)))
-		return (0);
+		return (free_array(argv));
 	argv = new_numbers(argc, argv);
 	if (argc <= 3)
 		three_arg(linked_list_start(argc, argv));
@@ -82,14 +90,14 @@ static int	sorting(int argc, char **argv)
 		five_arg(linked_list_start(argc, argv), argc);
 	else
 		radix_sort(linked_list_start(argc, argv));
-	return (1);
+	free_array(argv);
 }
 
 int	main(int argc, char	**argv)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	argc = argc -1;
 	argv = argv + 1;
 	if (argc == 0)
@@ -99,18 +107,20 @@ int	main(int argc, char	**argv)
 		while (++i < argc)
 		{
 			if (!correct_input_digits(argv[i]))
-				return (ft_printf("Error\n"));
+				return ((int)write(2, "Error\n", 6));
+			i++;
 		}
 	}
 	else
 	{
-		argv = ft_split(argv[0], ' ');
-		argc = -1;
-		while (argv[++argc])
+		argv = new_array(ft_split(argv[0], ' '));
+		if (argv == NULL)
 		{
-			if (ft_atoi(argv[i]) != ft_atoi(ft_itoa((int)ft_atoi(argv[i]))))
-				return (ft_printf("Error\n"));
+			free_array(argv);
+			return ((int)write(2, "Error\n", 6));
 		}
 	}
-	return (sorting(argc, argv));
+	sorting(argv);
+	free_array(argv);
+	return (1);
 }

@@ -39,7 +39,7 @@ char	**new_numbers(int argc, char **argv)
 	while (++loop < argc)
 	{
 		i = 0;
-		min = INT32_MAX;
+		min = 2147483647;
 		while (argv[i] != NULL)
 		{
 			if (ft_strncmp(argv[i], "!", 1) && ft_atoi(argv[i]) < min)
@@ -49,6 +49,7 @@ char	**new_numbers(int argc, char **argv)
 			}
 			i++;
 		}
+		free(argv[pos]);
 		argv[pos] = ft_strdup("!");
 		new[loop] = ft_itoa(pos);
 	}

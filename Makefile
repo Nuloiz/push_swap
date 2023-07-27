@@ -8,7 +8,7 @@ CC		=	gcc
 
 RM		=	rm -f
 
-CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 INPUT:=$(shell seq -5 4 | sort -R)
 INPUT1:=$(shell seq 0 2 | sort -R)

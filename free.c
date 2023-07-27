@@ -24,3 +24,30 @@ void	free_stack(t_node *stack)
 		stack = pos;
 	}
 }
+
+void	free_array(char	**array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+char	**new_array(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+			return (NULL);
+		i++;
+	}
+	return (argv);
+}
