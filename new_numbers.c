@@ -17,12 +17,13 @@ static char	**move_back(char **argv, char **new)
 	int	i;
 
 	i = 0;
+	free_array(argv);
 	while (new[i] != NULL)
 	{
 		argv[ft_atoi(new[i])] = ft_itoa(i);
 		i++;
 	}
-	free(new);
+	free_array(new);
 	return (argv);
 }
 
@@ -51,7 +52,11 @@ char	**new_numbers(int argc, char **argv)
 		}
 		free(argv[pos]);
 		argv[pos] = ft_strdup("!");
+		if (!argv[pos])
+			return (NULL);
 		new[loop] = ft_itoa(pos);
+		if (!new[loop])
+			return (NULL);
 	}
 	return (move_back(argv, new));
 }

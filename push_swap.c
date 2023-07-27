@@ -81,8 +81,8 @@ static void	sorting(char **argv)
 		free_array(argv);
 		return (ft_putendl_fd("Error", 2));
 	}
-	if (already_sorted(linked_list_start(argc, argv)))
-		return (free_array(argv));
+	if (!already_sorted(linked_list_start(argc, argv)))
+		return ;
 	argv = new_numbers(argc, argv);
 	if (argc <= 3)
 		three_arg(linked_list_start(argc, argv));
@@ -90,7 +90,6 @@ static void	sorting(char **argv)
 		five_arg(linked_list_start(argc, argv), argc);
 	else
 		radix_sort(linked_list_start(argc, argv));
-	free_array(argv);
 }
 
 int	main(int argc, char	**argv)
@@ -121,6 +120,5 @@ int	main(int argc, char	**argv)
 		}
 	}
 	sorting(argv);
-	free_array(argv);
 	return (1);
 }

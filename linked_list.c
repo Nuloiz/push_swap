@@ -30,6 +30,8 @@ static t_node	*add_node(t_node *head, int value)
 	t_node	*p;
 
 	temp = new_node(value);
+	if (!temp)
+		return (free_stack(head), NULL);
 	if (head == NULL)
 		head = temp;
 	else
@@ -52,8 +54,9 @@ t_node	*linked_list_start(int argc, char **argv)
 	while (i < argc)
 	{
 		stack_a = add_node(stack_a, (int)ft_atoi(argv[i]));
+		if (!stack_a)
+			return (NULL);
 		i++;
 	}
-	free_array(argv);
 	return (stack_a);
 }

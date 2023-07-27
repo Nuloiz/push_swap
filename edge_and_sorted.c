@@ -14,6 +14,8 @@
 
 int	already_sorted(t_node	*stack)
 {
+	if (stack == NULL)
+		return (0);
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
