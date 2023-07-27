@@ -17,6 +17,8 @@ static t_node	*new_node(int current)
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(struct s_node));
+	if (!new)
+		return (NULL);
 	new->value = current;
 	new->next = NULL;
 	return (new);
