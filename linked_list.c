@@ -44,7 +44,7 @@ static t_node	*add_node(t_node *head, int value)
 	return (head);
 }
 
-t_node	*linked_list_start(int argc, char **argv)
+t_node	*linked_list_start(int argc, char **list)
 {
 	int		i;
 	t_node	*stack_a;
@@ -53,10 +53,11 @@ t_node	*linked_list_start(int argc, char **argv)
 	stack_a = NULL;
 	while (i < argc)
 	{
-		stack_a = add_node(stack_a, (int)ft_atoi(argv[i]));
+		stack_a = add_node(stack_a, (int)ft_atoi(list[i]));
 		if (!stack_a)
 			return (NULL);
 		i++;
 	}
+	free_array(list);
 	return (stack_a);
 }

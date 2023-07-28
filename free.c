@@ -38,6 +38,18 @@ void	free_array(char	**array)
 	free(array);
 }
 
+void	free_array_list(char	**array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+}
+
 char	**new_array(char **argv)
 {
 	int	i;

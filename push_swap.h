@@ -25,6 +25,7 @@ typedef struct s_node
 }				t_node;
 
 int		main(int argc, char	**argv);
+char	**input_checker(int argc, char **argv);
 t_node	*linked_list_start(int argc, char **argv);
 t_node	*sa(t_node *stack_a);
 t_node	*sb(t_node *stack_b);
@@ -35,10 +36,11 @@ void	pb(t_node **stack_a, t_node **stack_b);
 void	radix_sort(t_node *stack_a);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
-void	five_arg(t_node *stack_a, int argc);
+void	five_arg(int num_of_arg, t_node *stack_a);
 char	**new_numbers(int argc, char **argv);
 void	free_stack(t_node *stack);
 void	free_array(char	**array);
+void	free_array_list(char **array);
 char	**new_array(char **argv);
 
 #endif

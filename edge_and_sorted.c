@@ -6,25 +6,30 @@
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:38:09 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/14 13:40:25 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/07/28 12:37:33 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	already_sorted(t_node	*stack)
+int	already_sorted(t_node	*list)
 {
+	t_node	*stack;
+
+	stack = list;
 	if (stack == NULL)
-		return (0);
+		return (1);
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
 		{
+			stack = list;
 			free_stack(stack);
 			return (0);
 		}
 		stack = stack->next;
 	}
+	stack = list;
 	free_stack(stack);
 	return (1);
 }
@@ -90,16 +95,16 @@ t_node	*three_arg_for_five(t_node *stack_a)
 	return (stack_a);
 }
 
-void	five_arg(t_node *stack_a, int argc)
+void	five_arg(int num_of_arg, t_node *stack_a)
 {
-	int		i;
 	t_node	*stack_b;
+	int		i;
 
 	i = -1;
 	stack_b = NULL;
-	while (++i < argc)
+	while (++i < num_of_arg)
 	{
-		if (stack_a->value == 0 || stack_a->value == argc - 1)
+		if (stack_a->value == 0 || stack_a->value == num_of_arg - 1)
 			pb(&stack_a, &stack_b);
 		rotate_stack(&stack_a, &stack_b, "rra");
 	}
