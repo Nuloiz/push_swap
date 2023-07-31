@@ -12,48 +12,28 @@
 
 #include "push_swap.h"
 
-static int	*move_back(int *new)
+static int	*move_back(int argc, int *new)
 {
 	int	*list;
 	int	i;
 
-	list = NULL;
+	list = malloc(argc * sizeof(int));
 	i = 0;
-	while (new[i])
+	while (i < argc)
 	{
 		list[new[i]] = i;
 		i++;
 	}
+	free (new);
 	return (list);
 }
 
-/*static int	*new_int_list(int argc, char **list)
-{
-	int	*new;
-	int	i;
-
-	new = NULL;
-	i = 0;
-	while (i < argc)
-	{
-		new[i] = (int)ft_atoi(list[i]);
-		i++;
-	}
-	return (new);
-}*/
-
-int	*new_numbers(int argc, char **list)
+int	*next_new_numbers(int argc, char **list, int loop, int *new)
 {
 	int		i;
 	int		min;
 	int		pos;
-	int		loop;
-	int		*new;
 
-	loop = -1;
-	new = malloc(argc * sizeof(int));
-	if (!new)
-		return (NULL);
 	while (++loop < argc)
 	{
 		i = 0;
@@ -70,6 +50,18 @@ int	*new_numbers(int argc, char **list)
 		list[pos] = "!";
 		new[loop] = pos;
 	}
-	free_array_list(argc, list);
-	return (move_back(new));
+	return (move_back(argc, new));
+}
+
+int	*new_numbers(int argc, char **list)
+{
+	int		loop;
+	int		*new;
+
+	loop = -1;
+	new = malloc(argc * sizeof(int));
+	if (!new)
+		return (NULL);
+	new = next_new_numbers(argc, list, loop, new);
+	return (new);
 }

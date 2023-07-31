@@ -58,5 +58,6 @@ t_node	*linked_list_start(int argc, int *list)
 			return (NULL);
 		i++;
 	}
+	free(list);
 	return (stack_a);
 }

@@ -24,13 +24,11 @@ int	already_sorted(t_node	*list)
 		if (stack->value > stack->next->value)
 		{
 			stack = list;
-			free_stack(stack);
 			return (0);
 		}
 		stack = stack->next;
 	}
 	stack = list;
-	free_stack(stack);
 	return (1);
 }
 

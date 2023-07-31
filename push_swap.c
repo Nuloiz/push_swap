@@ -37,7 +37,10 @@ static int	no_int_twice(char **list)
 static void	sorting(int num_of_arg, t_node *stack)
 {
 	if (already_sorted(stack))
+	{
+		free_stack(stack);
 		return ;
+	}
 	if (num_of_arg <= 3)
 		three_arg(stack);
 	else if (num_of_arg <= 5)
