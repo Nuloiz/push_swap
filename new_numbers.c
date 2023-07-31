@@ -27,6 +27,21 @@ static int	*move_back(int *new)
 	return (list);
 }
 
+/*static int	*new_int_list(int argc, char **list)
+{
+	int	*new;
+	int	i;
+
+	new = NULL;
+	i = 0;
+	while (i < argc)
+	{
+		new[i] = (int)ft_atoi(list[i]);
+		i++;
+	}
+	return (new);
+}*/
+
 int	*new_numbers(int argc, char **list)
 {
 	int		i;
@@ -36,7 +51,9 @@ int	*new_numbers(int argc, char **list)
 	int		*new;
 
 	loop = -1;
-	new = NULL;
+	new = malloc(argc * sizeof(int));
+	if (!new)
+		return (NULL);
 	while (++loop < argc)
 	{
 		i = 0;
@@ -50,13 +67,9 @@ int	*new_numbers(int argc, char **list)
 			}
 			i++;
 		}
-		list[pos] = ft_strdup("!");
-		if (!list[pos])
-			return (free_array_list(list), NULL);
+		list[pos] = "!";
 		new[loop] = pos;
-		if (!new[loop])
-			return (free_array_list(list), NULL);
 	}
-	free_array(list);
+	free_array_list(argc, list);
 	return (move_back(new));
 }

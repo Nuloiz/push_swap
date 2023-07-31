@@ -32,20 +32,23 @@ void	free_array(char	**array)
 	i = 0;
 	while (array[i] != NULL)
 	{
-		free(array[i]);
+		free(array);
 		i++;
 	}
 	free(array);
 }
 
-void	free_array_list(char	**array)
+void	free_array_list(int argc, char	**array)
 {
 	int	i;
 
 	i = 0;
-	while (array[i] != NULL)
+	while (i <= argc)
 	{
-		free(array[i]);
+		if (ft_strncmp(array[i], "!", 1) == 0)
+		{
+			free(array[i]);
+		}
 		i++;
 	}
 }

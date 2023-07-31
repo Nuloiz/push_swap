@@ -40,7 +40,7 @@ void	five_arg(int num_of_arg, t_node *stack_a);
 int		*new_numbers(int argc, char **list);
 void	free_stack(t_node *stack);
 void	free_array(char	**array);
-void	free_array_list(char **array);
+void	free_array_list(int argc, char **array);
 char	**new_array(char **argv);
 
 #endif
