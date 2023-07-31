@@ -6,7 +6,7 @@
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 15:34:09 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/07 15:36:42 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/07/31 11:30:29 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_node	*add_node(t_node *head, int value)
 	return (head);
 }
 
-t_node	*linked_list_start(int argc, char **list)
+t_node	*linked_list_start(int argc, int *list)
 {
 	int		i;
 	t_node	*stack_a;
@@ -53,11 +53,10 @@ t_node	*linked_list_start(int argc, char **list)
 	stack_a = NULL;
 	while (i < argc)
 	{
-		stack_a = add_node(stack_a, (int)ft_atoi(list[i]));
+		stack_a = add_node(stack_a, list[i]);
 		if (!stack_a)
 			return (NULL);
 		i++;
 	}
-	free_array(list);
 	return (stack_a);
 }

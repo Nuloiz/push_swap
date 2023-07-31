@@ -49,7 +49,7 @@ static void	sorting(int num_of_arg, t_node *stack)
 static void	new_list(char **list)
 {
 	t_node	*stack;
-	char	**new_list;
+	int		*new_list;
 	int		num_of_arg;
 
 	num_of_arg = 0;

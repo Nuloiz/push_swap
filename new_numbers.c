@@ -12,40 +12,38 @@
 
 #include "push_swap.h"
 
-static char	**move_back(char **list, char **new)
+static int	*move_back(int *new)
 {
+	int	*list;
 	int	i;
 
+	list = NULL;
 	i = 0;
-	while (new[i] != NULL)
+	while (new[i])
 	{
-		free(list[ft_atoi(new[i])]);
-		list[ft_atoi(new[i])] = ft_itoa(i);
-		if (!list[ft_atoi(new[i])])
-			return (free_array(list), NULL);
+		list[new[i]] = i;
 		i++;
 	}
-	free_array(new);
 	return (list);
 }
 
-char	**new_numbers(int argc, char **list)
+int	*new_numbers(int argc, char **list)
 {
 	int		i;
 	int		min;
 	int		pos;
 	int		loop;
-	char	**new;
+	int		*new;
 
 	loop = -1;
-	new = ft_calloc(argc + 1, sizeof(char **));
+	new = NULL;
 	while (++loop < argc)
 	{
 		i = 0;
 		min = 2147483647;
-		while (list[i] != NULL)
+		while (list[i])
 		{
-			if (ft_strncmp(list[i], "!", 1) && ft_atoi(list[i]) < min)
+			if (ft_strncmp(list[i], "!", 1) && ft_atoi(list[i]) <= min)
 			{
 				min = (int)ft_atoi(list[i]);
 				pos = i;
@@ -54,10 +52,11 @@ char	**new_numbers(int argc, char **list)
 		}
 		list[pos] = ft_strdup("!");
 		if (!list[pos])
-			return (free_array_list(list), free_array(new), NULL);
-		new[loop] = ft_itoa(pos);
+			return (free_array_list(list), NULL);
+		new[loop] = pos;
 		if (!new[loop])
-			return (free_array(new), free_array_list(list), NULL);
+			return (free_array_list(list), NULL);
 	}
-	return (move_back(list, new));
+	free_array(list);
+	return (move_back(new));
 }
