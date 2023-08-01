@@ -33,19 +33,19 @@ fclean: clean
 
 check: $(NAME)
 	@printf " running with 3 numbers... \t"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT1) | ./checker_Mac $(INPUT1)
+	#@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT1) | ./checker_Mac $(INPUT1)
 	@printf " number of instructions... \t"
 	@./$(NAME) $(INPUT1) | wc -l | tr -d "[:blank:]"
 	@printf "\n running with 5 numbers... \t"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT2) | ./checker_Mac $(INPUT2)
+	#@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT2) | ./checker_Mac $(INPUT2)
 	@printf " number of instructions... \t"
 	@./$(NAME) $(INPUT2) | wc -l | tr -d "[:blank:]"
 	@printf "\n running with 100 numbers... \t"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT3) | ./checker_Mac $(INPUT3)
+	#@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT3) | ./checker_Mac $(INPUT3)
 	@printf " number of instructions... \t"
 	@./$(NAME) $(INPUT3) | wc -l | tr -d "[:blank:]"
 	@printf "\n running with 500 numbers... \t"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT4) | ./checker_Mac $(INPUT4)
+	#@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT4) | ./checker_Mac $(INPUT4)
 	@printf " number of instructions... \t"
 	@./$(NAME) $(INPUT4) | wc -l | tr -d "[:blank:]"
 

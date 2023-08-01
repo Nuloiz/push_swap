@@ -37,10 +37,7 @@ static int	no_int_twice(char **list)
 static void	sorting(int num_of_arg, t_node *stack)
 {
 	if (already_sorted(stack))
-	{
-		free_stack(stack);
 		return ;
-	}
 	if (num_of_arg <= 3)
 		three_arg(stack);
 	else if (num_of_arg <= 5)
@@ -64,9 +61,11 @@ static void	new_list(char **list)
 	if (!new_list)
 		return ;
 	stack = linked_list_start(num_of_arg, new_list);
+	free(new_list);
 	if (!stack)
 		return ;
 	sorting(num_of_arg, stack);
+	free_stack(stack);
 }
 
 int	main(int argc, char	**argv)

@@ -64,7 +64,6 @@ void	three_arg(t_node *stack_a)
 			stack_a->value > stack_a->next->next->value)
 			rotate_stack(&stack_a, NULL, "ra");
 	}
-	free_stack(stack_a);
 }
 
 t_node	*three_arg_for_five(t_node *stack_a)
@@ -119,5 +118,4 @@ void	five_arg(int num_of_arg, t_node *stack_a)
 		rotate_stack(&stack_a, &stack_b, "ra");
 		pa(&stack_a, &stack_b);
 	}
-	free_stack(stack_a);
 }
