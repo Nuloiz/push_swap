@@ -46,7 +46,7 @@ static void	sorting(int num_of_arg, t_node *stack)
 		radix_sort(stack);
 }
 
-static void	new_list(char **list)
+static void	new_list(char **list, int index)
 {
 	t_node	*stack;
 	int		*new_list;
@@ -57,7 +57,7 @@ static void	new_list(char **list)
 		num_of_arg++;
 	if (!no_int_twice(list))
 		return (ft_putendl_fd("Error", 2));
-	new_list = new_numbers(num_of_arg, list);
+	new_list = new_numbers(num_of_arg, list, index);
 	if (!new_list)
 		return ;
 	stack = linked_list_start(num_of_arg, new_list);
@@ -86,13 +86,7 @@ int	main(int argc, char	**argv)
 	}
 	else
 		list = argv;
-	if (!*list)
-	{
-		if (index == 2)
-			free(list);
-		return (ft_putendl_fd("Error", 2), 0);
-	}
-	new_list(list);
+	new_list(list, index);
 	if (index == 2)
 		free_array(list);
 	return (1);

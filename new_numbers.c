@@ -28,12 +28,14 @@ static int	*move_back(int argc, int *new)
 	return (list);
 }
 
-int	*next_new_numbers(int argc, char **list, int loop, int *new)
+int	*next_new_numbers(int argc, char **list, int *new, int index)
 {
+	int		loop;
 	int		i;
 	int		min;
 	int		pos;
 
+	loop = -1;
 	while (++loop < argc)
 	{
 		i = 0;
@@ -47,21 +49,21 @@ int	*next_new_numbers(int argc, char **list, int loop, int *new)
 			}
 			i++;
 		}
-		list[pos] = "!";
+		if (index == 2)
+			free(list[pos]);
+		list[pos] = ft_strdup("!");
 		new[loop] = pos;
 	}
 	return (move_back(argc, new));
 }
 
-int	*new_numbers(int argc, char **list)
+int	*new_numbers(int argc, char **list, int index)
 {
-	int		loop;
 	int		*new;
 
-	loop = -1;
 	new = malloc(argc * sizeof(int));
 	if (!new)
 		return (NULL);
-	new = next_new_numbers(argc, list, loop, new);
+	new = next_new_numbers(argc, list, new, index);
 	return (new);
 }

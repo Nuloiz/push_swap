@@ -37,7 +37,7 @@ void	radix_sort(t_node *stack_a);
 int		already_sorted(t_node *stack);
 void	three_arg(t_node *stack_a);
 void	five_arg(int num_of_arg, t_node *stack_a);
-int		*new_numbers(int argc, char **list);
+int		*new_numbers(int argc, char **list, int index);
 void	free_stack(t_node *stack);
 void	free_array(char	**array);
 void	free_array_list(int argc, char **array);

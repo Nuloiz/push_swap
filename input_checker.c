@@ -66,7 +66,7 @@ int	input_checker(int argc, char **argv)
 		list = argv;
 	index = correct_number(list);
 	if (one == 1)
-		free(list);
+		free_array(list);
 	if (one == 1 && index == 1)
 		return (2);
 	return (index);
