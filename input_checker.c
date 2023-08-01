@@ -6,69 +6,68 @@
 /*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:29:34 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/27 15:29:34 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/08/01 12:23:37 by nschutz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	correct_input_digits(char *argv)
+static int	correct_input_digits(char *number)
 {
 	int		i;
 	long	test;
 
-	i = 0;
-	test = ft_atoi(argv);
+	i = 1;
+	test = ft_atoi(number);
 	if (test > 2147483647 || test < -2147483648)
 		return (0);
-	while (argv[i])
+	if (!ft_isdigit(number[0]) && number[0] != '-')
+		return (0);
+	while (number[i])
 	{
-		if (!ft_isdigit(argv[i]) && argv[i] != '-')
+		if (!ft_isdigit(number[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-static int	correct_input_array(int argc, char *argv)
+static int	correct_number(char **list)
 {
-	int		i;
+	int	i;
+	int	index;
 
 	i = 0;
-	if (argc != 1)
-		return (0);
-	while (argv[i])
+	while (list[i])
 	{
-		if (!ft_isdigit(argv[i]) && argv[i] != ' ' && argv[i] != '-')
+		index = correct_input_digits(list[i]);
+		if (index == 0)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-char	**input_checker(int argc, char **argv)
+int	input_checker(int argc, char **argv)
 {
-	int		i;
+	int		index;
+	int		one;
 	char	**list;
 
-	i = 0;
-	list = argv;
-	if (!correct_input_array(argc, list[i]))
+	one = 0;
+	if (argc == 1)
 	{
-		while (++i < argc)
-		{
-			if (!correct_input_digits(list[i]))
-				return (NULL);
-		}
+		list = ft_split(argv[0], ' ');
+		if (!list)
+			return (0);
+		one = 1;
 	}
 	else
-	{
-		list = new_array(ft_split(list[0], ' '));
-		if (list == NULL)
-		{
-			free_array(list);
-			return (NULL);
-		}
-	}
-	return (list);
+		list = argv;
+	index = correct_number(list);
+	if (one == 1)
+		free(list);
+	if (one == 1 && index == 1)
+		return (2);
+	return (index);
 }

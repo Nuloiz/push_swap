@@ -25,7 +25,7 @@ typedef struct s_node
 }				t_node;
 
 int		main(int argc, char	**argv);
-char	**input_checker(int argc, char **argv);
+int		input_checker(int argc, char **argv);
 t_node	*linked_list_start(int argc, int *list);
 t_node	*sa(t_node *stack_a);
 t_node	*sb(t_node *stack_b);

@@ -70,15 +70,30 @@ static void	new_list(char **list)
 
 int	main(int argc, char	**argv)
 {
+	int		index;
 	char	**list;
 
 	argc = argc -1;
 	argv = argv + 1;
-	if (argc == 0)
-		return (0);
-	list = input_checker(argc, argv);
-	if (!list)
-		return (0);
+	index = input_checker(argc, argv);
+	if (argc == 0 || index == 0)
+		return (ft_putendl_fd("Error", 2), 0);
+	else if (index == 2)
+	{
+		list = ft_split(argv[0], ' ');
+		if (!list)
+			return (0);
+	}
+	else
+		list = argv;
+	if (!*list)
+	{
+		if (index == 2)
+			free(list);
+		return (ft_putendl_fd("Error", 2), 0);
+	}
 	new_list(list);
+	if (index == 2)
+		free_array(list);
 	return (1);
 }
