@@ -45,10 +45,7 @@ void	free_array_list(int argc, char	**array)
 	i = 0;
 	while (i <= argc)
 	{
-		if (ft_strncmp(array[i], "!", 1) == 0)
-		{
-			free(array[i]);
-		}
+		free(array[i]);
 		i++;
 	}
 }

@@ -89,5 +89,7 @@ int	main(int argc, char	**argv)
 	new_list(list, index);
 	if (index == 2)
 		free_array(list);
+	else
+		free_array_list(argc, list);
 	return (1);
 }
