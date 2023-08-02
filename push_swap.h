@@ -42,5 +42,8 @@ void	free_stack(t_node *stack);
 void	free_array(char	**array);
 void	free_array_list(int argc, char **array);
 char	**new_array(char **argv);
+void	ft_lstadd_front(t_node **lst, t_node *new);
+void	ft_lstadd_back(t_node **lst, t_node *new);
+t_node	*ft_lstlast(t_node *lst);
 
 #endif
