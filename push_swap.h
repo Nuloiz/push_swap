@@ -29,7 +29,7 @@ int		input_checker(int argc, char **argv);
 t_node	*linked_list_start(int argc, int *list);
 t_node	*sa(t_node *stack_a);
 t_node	*sb(t_node *stack_b);
-void	ss(t_node **stack_a, t_node **stack_b);
+void	ss(t_node *stack_a, t_node *stack_b);
 void	rotate_stack(t_node **stack_a, t_node **stack_b, char *operation);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);

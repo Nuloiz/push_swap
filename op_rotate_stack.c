@@ -27,6 +27,7 @@ static t_node	*ra_rb(t_node **stack)
 	{
 		last = last->next;
 	}
+	free_stack(first->next);
 	first->next = NULL;
 	last->next = first;
 	*stack = second;
@@ -46,6 +47,7 @@ static t_node	*rra_rrb(t_node **stack)
 		nearlylast = nearlylast->next;
 	}
 	last = nearlylast->next;
+	free_stack(nearlylast->next);
 	nearlylast->next = NULL;
 	last->next = *stack;
 	*stack = last;
