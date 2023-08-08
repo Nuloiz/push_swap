@@ -12,17 +12,23 @@
 
 #include "push_swap.h"
 
-void	free_stack(t_node *stack)
+void	free_stack(t_node **stack)
 {
-	t_node	*pos;
+	t_node	*head;
 
-	pos = stack;
-	while (pos != NULL)
+	if (!*stack)
 	{
-		pos = stack->next;
 		free(stack);
-		stack = pos;
+		return ;
 	}
+	while ((*stack)->next != NULL)
+	{
+		head = (*stack)->next;
+		free(*stack);
+		*stack = head;
+	}
+	free(*stack);
+	free(stack);
 }
 
 void	free_array(char	**array)

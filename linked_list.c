@@ -16,7 +16,7 @@ static t_node	*new_node(int current)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(t_node));
+	new = ft_calloc(1, sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->value = current;
@@ -44,21 +44,21 @@ static t_node	*new_node(int current)
 	return (head);
 }*/
 
-t_node	*linked_list_start(int argc, int *list)
+t_node	**linked_list_start(int argc, int *list)
 {
 	int		i;
 	t_node	**stack_a;
 	t_node	*new;
 
 	i = 0;
-	stack_a = malloc(sizeof(t_node **));
+	stack_a = ft_calloc(sizeof(t_node **), 1);
 	while (i < argc)
 	{
 		new = new_node(list[i]);
 		if (!new)
-			return (free_stack(*stack_a), NULL);
+			return (free_stack(stack_a), NULL);
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	return (*stack_a);
+	return (stack_a);
 }

@@ -33,7 +33,7 @@ static t_node	*ra_rb(t_node **stack)
 	return (*stack);
 }
 
-static t_node	*rra_rrb(t_node **stack)
+static void	rra_rrb(t_node **stack)
 {
 	t_node	*new_first;
 	t_node	*new_second;
@@ -46,25 +46,24 @@ static t_node	*rra_rrb(t_node **stack)
 		new_last = new_last->next;
 	new_last->next = NULL;
 	ft_lstadd_front(stack, new_first);
-	return (0);
 }
 
 static void	rr_to_rrr(t_node **stack_a, t_node **stack_b, char *operation)
 {
 	if (operation[2] == 'a')
 	{
-		*stack_a = rra_rrb(stack_a);
+		rra_rrb(stack_a);
 		ft_printf("rra\n");
 	}
 	else if (operation[2] == 'b')
 	{
-		*stack_b = rra_rrb(stack_b);
+		rra_rrb(stack_b);
 		ft_printf("rrb\n");
 	}
 	else if (operation[2] == 'r')
 	{
-		*stack_a = rra_rrb(stack_a);
-		*stack_b = rra_rrb(stack_b);
+		rra_rrb(stack_a);
+		rra_rrb(stack_b);
 		ft_printf("rrr\n");
 	}
 	else

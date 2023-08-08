@@ -48,7 +48,7 @@ static void	sorting(int num_of_arg, t_node *stack)
 
 static void	new_list(char **list, int index)
 {
-	t_node	*stack;
+	t_node	**stack;
 	int		*new_list;
 	int		num_of_arg;
 
@@ -64,7 +64,7 @@ static void	new_list(char **list, int index)
 	free(new_list);
 	if (!stack)
 		return ;
-	sorting(num_of_arg, stack);
+	sorting(num_of_arg, *stack);
 	free_stack(stack);
 }
 
