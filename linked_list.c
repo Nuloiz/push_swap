@@ -16,7 +16,7 @@ static t_node	*new_node(int current)
 {
 	t_node	*new;
 
-	new = (t_node *)malloc(sizeof(struct s_node));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->value = current;
@@ -51,7 +51,7 @@ t_node	*linked_list_start(int argc, int *list)
 	t_node	*new;
 
 	i = 0;
-	stack_a = NULL;
+	stack_a = malloc(sizeof(t_node **));
 	while (i < argc)
 	{
 		new = new_node(list[i]);
