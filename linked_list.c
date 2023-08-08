@@ -24,7 +24,7 @@ static t_node	*new_node(int current)
 	return (new);
 }
 
-static t_node	*add_node(t_node *head, int value)
+/*static t_node	*add_node(t_node *head, int value)
 {
 	t_node	*temp;
 	t_node	*p;
@@ -42,21 +42,23 @@ static t_node	*add_node(t_node *head, int value)
 		p->next = temp;
 	}
 	return (head);
-}
+}*/
 
 t_node	*linked_list_start(int argc, int *list)
 {
 	int		i;
-	t_node	*stack_a;
+	t_node	**stack_a;
+	t_node	*new;
 
 	i = 0;
 	stack_a = NULL;
 	while (i < argc)
 	{
-		stack_a = add_node(stack_a, list[i]);
-		if (!stack_a)
-			return (NULL);
+		new = new_node(list[i]);
+		if (!new)
+			return (free_stack(*stack_a), NULL);
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	return (stack_a);
+	return (*stack_a);
 }

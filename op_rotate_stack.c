@@ -35,21 +35,18 @@ static t_node	*ra_rb(t_node **stack)
 
 static t_node	*rra_rrb(t_node **stack)
 {
-	t_node	*nearlylast;
-	t_node	*last;
+	t_node	*new_first;
+	t_node	*new_second;
+	t_node	*new_last;
 
-	if (*stack == NULL || (*stack)->next == NULL)
-		return (*stack);
-	nearlylast = *stack;
-	while (nearlylast->next->next != NULL)
-	{
-		nearlylast = nearlylast->next;
-	}
-	last = nearlylast->next;
-	nearlylast->next = last->next;
-	last->next = *stack;
-	*stack = last;
-	return (*stack);
+	new_second = *stack;
+	new_first = ft_lstlast(new_second);
+	new_last = *stack;
+	while (new_last->next->next != NULL)
+		new_last = new_last->next;
+	new_last->next = NULL;
+	ft_lstadd_front(stack, new_first);
+	return (0);
 }
 
 static void	rr_to_rrr(t_node **stack_a, t_node **stack_b, char *operation)
