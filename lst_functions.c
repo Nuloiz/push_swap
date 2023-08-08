@@ -22,15 +22,15 @@ void	ft_lstadd_back(t_node **lst, t_node *new)
 {
 	t_node	*last;
 
-	if (*lst)
-	{
-		last = ft_lstlast(*lst);
-		last->next = new;
-	}
-	else
+	if (!lst || !*lst)
 	{
 		*lst = new;
 		(*lst)->next = NULL;
+	}
+	else
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
 }
 

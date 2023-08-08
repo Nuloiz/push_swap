@@ -44,14 +44,12 @@ static t_node	*new_node(int current)
 	return (head);
 }*/
 
-t_node	**linked_list_start(int argc, int *list)
+t_node	**linked_list_start(int argc, int *list, t_node **stack_a)
 {
 	int		i;
-	t_node	**stack_a;
 	t_node	*new;
 
 	i = 0;
-	stack_a = ft_calloc(sizeof(t_node **), 1);
 	while (i < argc)
 	{
 		new = new_node(list[i]);

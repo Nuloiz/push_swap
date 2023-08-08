@@ -14,21 +14,14 @@
 
 void	free_stack(t_node **stack)
 {
-	t_node	*head;
+	t_node	*tmp;
 
-	if (!*stack)
+	while (*stack)
 	{
-		free(stack);
-		return ;
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
 	}
-	while ((*stack)->next != NULL)
-	{
-		head = (*stack)->next;
-		free(*stack);
-		*stack = head;
-	}
-	free(*stack);
-	free(stack);
 }
 
 void	free_array(char	**array)

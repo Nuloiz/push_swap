@@ -12,7 +12,19 @@
 
 #include "push_swap.h"
 
-static int	no_int_twice(char **list)
+void	print_list(t_node *stack)
+{
+	t_node	*current;
+
+	current = stack;
+	while (current)
+	{
+		ft_printf("%d\n", current->value);
+		current = current->next;
+	}
+}
+
+int	no_int_twice(char **list)
 {
 	int	i;
 	int	j;
@@ -34,38 +46,38 @@ static int	no_int_twice(char **list)
 	return (1);
 }
 
-static void	sorting(int num_of_arg, t_node *stack)
+static t_node	*sorting(int num_of_arg, t_node *stack)
 {
 	if (already_sorted(stack))
-		return ;
+		return (NULL);
 	if (num_of_arg <= 3)
-		three_arg(stack);
+		stack = three_arg(stack);
 	else if (num_of_arg <= 5)
-		five_arg(num_of_arg, stack);
+		stack = five_arg(num_of_arg, stack);
 	else
-		radix_sort(stack);
+		stack = radix_sort(stack);
+	return (stack);
 }
 
 static void	new_list(char **list, int index)
 {
-	t_node	**stack;
+	t_node	*stack_a;
 	int		*new_list;
 	int		num_of_arg;
 
 	num_of_arg = 0;
+	stack_a = NULL;
 	while (list[num_of_arg])
 		num_of_arg++;
-	if (!no_int_twice(list))
-		return (ft_putendl_fd("Error", 2));
 	new_list = new_numbers(num_of_arg, list, index);
 	if (!new_list)
 		return ;
-	stack = linked_list_start(num_of_arg, new_list);
+	linked_list_start(num_of_arg, new_list, &stack_a);
 	free(new_list);
-	if (!stack)
+	if (!stack_a)
 		return ;
-	sorting(num_of_arg, *stack);
-	free_stack(stack);
+	stack_a = sorting(num_of_arg, stack_a);
+	free_stack(&stack_a);
 }
 
 int	main(int argc, char	**argv)

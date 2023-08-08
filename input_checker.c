@@ -65,6 +65,8 @@ int	input_checker(int argc, char **argv)
 	else
 		list = argv;
 	index = correct_number(list);
+	if (!no_int_twice(list))
+		index = 0;
 	if (one == 1)
 		free_array(list);
 	if (one == 1 && index == 1)

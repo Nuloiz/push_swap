@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-static t_node	*ra_rb(t_node **stack)
+static void	ra_rb(t_node **stack)
 {
 	t_node	*first;
 	t_node	*second;
 	t_node	*last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		return (*stack);
+		return ;
 	first = *stack;
 	second = first->next;
 	last = first->next;
@@ -27,10 +27,9 @@ static t_node	*ra_rb(t_node **stack)
 	{
 		last = last->next;
 	}
-	first->next = last->next;
+	first->next = NULL;
 	last->next = first;
 	*stack = second;
-	return (*stack);
 }
 
 static void	rra_rrb(t_node **stack)
@@ -68,8 +67,8 @@ static void	rr_to_rrr(t_node **stack_a, t_node **stack_b, char *operation)
 	}
 	else
 	{
-		*stack_a = ra_rb(stack_a);
-		*stack_b = ra_rb(stack_b);
+		ra_rb(stack_a);
+		ra_rb(stack_b);
 		ft_printf("rr\n");
 	}
 }
@@ -78,12 +77,12 @@ void	rotate_stack(t_node **stack_a, t_node	**stack_b, char	*operation)
 {
 	if (operation[1] == 'a')
 	{
-		*stack_a = ra_rb(stack_a);
+		ra_rb(stack_a);
 		ft_printf("ra\n");
 	}
 	else if (operation[1] == 'b')
 	{
-		*stack_b = ra_rb(stack_b);
+		ra_rb(stack_b);
 		ft_printf("rb\n");
 	}
 	else if (operation[1] == 'r')
