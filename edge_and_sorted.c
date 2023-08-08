@@ -43,7 +43,7 @@ static int	sorted(t_node *stack)
 	return (1);
 }
 
-t_node	*three_arg(t_node *stack_a)
+void	three_arg(t_node *stack_a)
 {
 	if (stack_a->next->next == NULL)
 		stack_a = sa(stack_a);
@@ -64,7 +64,7 @@ t_node	*three_arg(t_node *stack_a)
 			stack_a->value > stack_a->next->next->value)
 			rotate_stack(&stack_a, NULL, "ra");
 	}
-	return (stack_a);
+	free_stack(&stack_a);
 }
 
 t_node	*three_arg_for_five(t_node *stack_a)
@@ -93,7 +93,7 @@ t_node	*three_arg_for_five(t_node *stack_a)
 	return (stack_a);
 }
 
-t_node	*five_arg(int num_of_arg, t_node *stack_a)
+void	five_arg(int num_of_arg, t_node *stack_a)
 {
 	t_node	*stack_b;
 	int		i;
@@ -119,5 +119,5 @@ t_node	*five_arg(int num_of_arg, t_node *stack_a)
 		rotate_stack(&stack_a, &stack_b, "ra");
 		pa(&stack_a, &stack_b);
 	}
-	return (stack_a);
+	free_stack(&stack_a);
 }

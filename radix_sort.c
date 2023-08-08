@@ -59,7 +59,7 @@ static void	push_rotate(t_node **stack_a, t_node **stack_b, int pos, int nodes)
 	}
 }
 
-t_node	*radix_sort(t_node *stack_a)
+void	radix_sort(t_node *stack_a)
 {
 	t_node	*stack_b;
 	int		pos_bit_shift;
@@ -77,5 +77,5 @@ t_node	*radix_sort(t_node *stack_a)
 		while (stack_b != NULL)
 			pa(&stack_a, &stack_b);
 	}
-	return (stack_a);
+	free_stack(&stack_a);
 }

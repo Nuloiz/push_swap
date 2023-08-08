@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-void	print_list(t_node *stack)
-{
-	t_node	*current;
-
-	current = stack;
-	while (current)
-	{
-		ft_printf("%d\n", current->value);
-		current = current->next;
-	}
-}
-
 int	no_int_twice(char **list)
 {
 	int	i;
@@ -46,17 +34,16 @@ int	no_int_twice(char **list)
 	return (1);
 }
 
-static t_node	*sorting(int num_of_arg, t_node *stack)
+static void	sorting(int num_of_arg, t_node *stack)
 {
 	if (already_sorted(stack))
-		return (NULL);
+		return ;
 	if (num_of_arg <= 3)
-		stack = three_arg(stack);
+		three_arg(stack);
 	else if (num_of_arg <= 5)
-		stack = five_arg(num_of_arg, stack);
+		five_arg(num_of_arg, stack);
 	else
-		stack = radix_sort(stack);
-	return (stack);
+		radix_sort(stack);
 }
 
 static void	new_list(char **list, int index)
@@ -76,8 +63,7 @@ static void	new_list(char **list, int index)
 	free(new_list);
 	if (!stack_a)
 		return ;
-	stack_a = sorting(num_of_arg, stack_a);
-	free_stack(&stack_a);
+	sorting(num_of_arg, stack_a);
 }
 
 int	main(int argc, char	**argv)
